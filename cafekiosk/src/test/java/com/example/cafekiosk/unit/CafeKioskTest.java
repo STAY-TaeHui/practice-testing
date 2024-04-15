@@ -8,11 +8,12 @@ import java.time.LocalDateTime;
 import com.example.cafekiosk.unit.beverage.Americano;
 import com.example.cafekiosk.unit.beverage.Latte;
 import com.example.cafekiosk.unit.order.Order;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CafeKioskTest
 {
-
+    @DisplayName("음료 1개를 추가하면 주문 목록에 담긴다.")
     @Test
     void add()
     {
@@ -83,6 +84,7 @@ class CafeKioskTest
     @Test
     void calculateTotalPrice()
     {
+        //given
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
         Latte latte = new Latte();
@@ -90,8 +92,10 @@ class CafeKioskTest
         cafeKiosk.add(latte);
         cafeKiosk.add(americano);
 
+        //when
         int totalPrice = cafeKiosk.calculateTotalPrice();
 
+        //then
         assertThat(totalPrice).isEqualTo(8500);
     }
 
