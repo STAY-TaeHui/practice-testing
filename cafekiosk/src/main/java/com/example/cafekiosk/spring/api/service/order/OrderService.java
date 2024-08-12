@@ -22,7 +22,7 @@ public class OrderService
         //Product
         List<Product> products = productRepository.findAllByProductNumberIn(productNumbers);
 
-        Order order = Order.create(products);
+        Order order = Order.create(products, registeredDateTime);
 
         //Order
         return null;

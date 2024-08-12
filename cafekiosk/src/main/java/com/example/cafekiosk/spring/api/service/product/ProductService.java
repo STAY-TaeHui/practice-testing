@@ -1,5 +1,6 @@
 package com.example.cafekiosk.spring.api.service.product;
 
+import com.example.cafekiosk.spring.domain.product.dto.ProductCreateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.example.cafekiosk.spring.api.service.product.response.ProductResponse;
@@ -24,4 +25,8 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
+    public ProductResponse createProduct(ProductCreateRequest serviceRequest)
+    {
+        return null;
+    }
 }
