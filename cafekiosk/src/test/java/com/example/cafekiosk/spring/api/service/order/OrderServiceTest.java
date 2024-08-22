@@ -77,7 +77,7 @@ class OrderServiceTest
         Stock stock2 = Stock.create("001", 2);
         // when
 
-        OrderResponse orderResponse = orderService.createOrder(createRequest, LocalDateTime.now());
+        OrderResponse orderResponse = orderService.createOrder(null, LocalDateTime.now());
         // then
         assertThat(orderResponse.getId()).isNotNull();
         assertThat(orderResponse)

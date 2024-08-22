@@ -1,8 +1,5 @@
 package com.example.cafekiosk.spring.api;
 
-import java.util.List;
-
-import com.example.cafekiosk.spring.api.service.product.response.ProductResponse;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
@@ -22,6 +19,9 @@ public class ApiResponse<T>
         this.data = data;
     }
 
+    /*
+    * Response의 규격은 프론트/백엔드에서 정하기 나름
+    * */
     public static <T> ApiResponse<T> of(HttpStatus httpStatus, String message, T data)
     {
         return new ApiResponse<>(httpStatus, message, data);
