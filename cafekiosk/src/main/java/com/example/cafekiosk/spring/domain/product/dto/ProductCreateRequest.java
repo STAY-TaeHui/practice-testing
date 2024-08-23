@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductCreateRequest
 {
-    @NotNull(message = "상품 타입은 필수입니다.") //Exception 발생했을 때 message
+    @NotNull(message = "상품 타입은 필수입니다.") //Exception 발생했을 때 Client에게 보낼 message
     private ProductType type;
 
-    @NotNull(message = "상품 판매상태는 필수입니다.")
+    @NotNull(message = "상품 판매 상태는 필수입니다.")
     private ProductSellingStatus sellingStatus;
 
     @NotBlank(message = "상품 이름은 필수입니다.")
