@@ -1,15 +1,18 @@
 package com.example.cafekiosk.spring.api.controller.product;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import java.util.List;
+
 import com.example.cafekiosk.spring.api.service.product.ProductService;
+import com.example.cafekiosk.spring.api.service.product.response.ProductResponse;
 import com.example.cafekiosk.spring.domain.product.ProductSellingStatus;
 import com.example.cafekiosk.spring.domain.product.ProductType;
-import com.example.cafekiosk.spring.domain.product.dto.ProductCreateRequest;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.example.cafekiosk.spring.api.controller.product.request.ProductCreateRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,9 +21,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 //Controller단의 가벼운 테스트만 할 수 있는 어노테이션
 @WebMvcTest(controllers = ProductController.class)
@@ -171,5 +171,26 @@ class ProductControllerTest
         ;
     }
 
+    @DisplayName("판매 상품을 조회한다.")
+    @Test
+    void getSellingProducts() throws Exception
+    {
+        // given
+        List<ProductResponse> result = List.of();
+
+        when(productService.getSellingProducts()).thenReturn(result);
+
+        // when then
+        //API 호출
+        mockMvc.perform(
+                get("/api/v1/products/selling"))
+            .andDo(print()) //자세한 로그
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.code").value("200"))
+            .andExpect(jsonPath("$.status").value("OK"))
+            .andExpect(jsonPath("$.message").value("OK"))
+        ;
+
+    }
 
 }

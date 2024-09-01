@@ -7,6 +7,7 @@ import static org.assertj.core.groups.Tuple.tuple;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.example.cafekiosk.spring.api.controller.order.request.OrderCreateRequest;
 import com.example.cafekiosk.spring.domain.Stock;
 import com.example.cafekiosk.spring.domain.product.Product;
 import com.example.cafekiosk.spring.domain.product.ProductRepository;
@@ -46,7 +47,7 @@ class OrderServiceTest
 
         // when
 
-        OrderResponse orderResponse = orderService.createOrder(createRequest, LocalDateTime.now());
+        OrderResponse orderResponse = orderService.createOrder(createRequest.toServiceRequest(), LocalDateTime.now());
         // then
         assertThat(orderResponse.getId()).isNotNull();
         assertThat(orderResponse)

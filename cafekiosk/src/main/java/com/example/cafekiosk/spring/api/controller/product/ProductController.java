@@ -3,7 +3,7 @@ package com.example.cafekiosk.spring.api.controller.product;
 import com.example.cafekiosk.spring.api.ApiResponse;
 import com.example.cafekiosk.spring.api.service.product.ProductService;
 import com.example.cafekiosk.spring.api.service.product.response.ProductResponse;
-import com.example.cafekiosk.spring.domain.product.dto.ProductCreateRequest;
+import com.example.cafekiosk.spring.api.controller.product.request.ProductCreateRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
